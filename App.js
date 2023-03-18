@@ -6,7 +6,7 @@ import './App.css';
 
 
 
-
+// for income tax
 function App() {
   const [showIncomeTaxPopup, setShowIncomeTaxPopup] = useState(false);
   const [income, setIncome] = useState(0);
@@ -43,7 +43,7 @@ const closePopup = () => {
   }
 
 
-
+  //for vehicle tax
   const [showVehicleTaxPopup, setShowVehicleTaxPopup] = useState(false);
   const handleVehicleTaxButtonClick = () => {
     setShowVehicleTaxPopup(true);
@@ -60,9 +60,9 @@ const closePopup = () => {
   const handleTaxRateChange = (event) => {
     setTaxRate(event.target.value);
   };
-
+   
   const calculateVehicleTax = () => {
-    const tax = (vehicleValue * taxRate) / 100;
+    const tax = (vehicleValue * taxRate) / 100;  //formula for vehicle tax
     setVehicleTax(tax);
   };
 
@@ -83,7 +83,7 @@ const closePopup = () => {
       </div>
 
       <div className="button">
-        <button onClick={handleIncomeTaxButtonClick}>Income tax</button>
+        <button onClick={handleIncomeTaxButtonClick}>Income tax</button>     
         <button onClick={handleVehicleTaxButtonClick}>Vehicle tax</button>        
         <button>Salary tax</button>
         <button>VAT</button>
