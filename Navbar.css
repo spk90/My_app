@@ -5,6 +5,8 @@
   padding: 0;
   box-sizing: border-box;
   font-family: "Jost", sans-serif;
+  background-image: image('file:///C:/Users/DELL/Desktop/Tax.jpg');
+  
 }.button {
   position: absolute;
   top: 20px; /* adjust this value to move the button up or down */
@@ -19,8 +21,8 @@
   position: relative;
   top: 290px; /* adjust this value to move the button up or down */
   left: 205px; /* adjust this value to move the button left or right */
-  font-size: large;
-  color:grey;
+  font-size: 30px;
+  color:black;
 }.sidebar{
   font-size: large;
   color:blue ;
@@ -28,17 +30,35 @@
 }.income{
   padding: 50px;
   display: flex;
+  font-size: 10px;
 }.tax{
-  padding: 60px;
+  padding: px;
   display: flex;
+  font-size: 40px;
+  color: black;
   
+
+
+  
+}.Instruction h9 {
+  position: absolute;
+  top: 50px;
+  left: 600px;
+  border: 1px solid black;
+  padding: 10px;
+  display: inline-block;
 }
+  
+
 
 button {
   font-size: 3em;
   padding: 20px 40px;
   padding: 10px 20px;
   margin: 10px;
+  color: burlywood;
+  border-radius: 20px;
+  
 
 }
 .sidebar {
@@ -54,7 +74,7 @@ button {
   font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif
 
 }.popup{
-  background-color: ghostwhite;
+  background-color: rgb(236, 226, 226);
   color: black;
   position: relative;
   top: 190px; 
@@ -67,6 +87,14 @@ button {
   margin: 0%;
   position: relative;
   padding:40px;
+  position: fixed;
+  position: fixed;
+  top: 100;
+  left: 1000;
+  width: 950px;
+  height: 1000px;
+   
+
 }.popup-inner{
   font-size: 25px;
 }.income-tax-buttons{
@@ -75,7 +103,26 @@ button {
   left: 50%;
   size: 130px;
   align-items: center;
+}.profile-button{
+  padding: 10px;
+  left: 100;
+}.profile-button {
+  position: absolute;
+  top: 70px;
+  left: 1400px;
+  width: 30px;
+  height: 30px;
+  font-size: 1.5rem;
+  background-color:#131212;
+  border: none;
+  border-radius: 50%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
+
+.profile-button i {
+  margin-top: 4px;
+}
+
 
 
 {
@@ -98,6 +145,11 @@ button {
     border: 2px solid #131212;
     width: 200px;
     outline: none;
+    position: absolute;
+    top: 200px;
+    right: 10px;
+    size: 100px;
+
   }
   
   /* Position the search input at the top right corner */
