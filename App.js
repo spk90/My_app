@@ -6,7 +6,8 @@ import './App.css';
 
 
 
-// for income tax
+
+
 function App() {
   const [showIncomeTaxPopup, setShowIncomeTaxPopup] = useState(false);
   const [income, setIncome] = useState(0);
@@ -43,12 +44,11 @@ const closePopup = () => {
   }
 
 
-  //for vehicle tax
+
   const [showVehicleTaxPopup, setShowVehicleTaxPopup] = useState(false);
   const handleVehicleTaxButtonClick = () => {
     setShowVehicleTaxPopup(true);
-  }
-
+  };
   const [vehicleValue, setVehicleValue] = useState(0);
   const [taxRate, setTaxRate] = useState(0);
   const [vehicleTax, setVehicleTax] = useState(0);
@@ -60,11 +60,44 @@ const closePopup = () => {
   const handleTaxRateChange = (event) => {
     setTaxRate(event.target.value);
   };
-   
+
   const calculateVehicleTax = () => {
-    const tax = (vehicleValue * taxRate) / 100;  //formula for vehicle tax
+    const tax = (vehicleValue * taxRate) / 100;
     setVehicleTax(tax);
   };
+
+ const handleCapitalGainTaxClick = () => {
+    
+  };
+
+
+  const [showCgtTaxPopup, setShowCgtTaxPopup] = useState(false);
+  const [buyValue, setBuyValue] = useState('');
+  const [sellValue, setSellValue] = useState('');
+  const [cgtTax, setCgtTax] = useState('');
+
+  const handleBuyValueChange = (event) => {
+    setBuyValue(event.target.value);
+  };
+
+  const handleSellValueChange = (event) => {
+    setSellValue(event.target.value);
+  };
+  
+    const calculateCgtTax = () => {
+      let cgtTax = 0;
+      if (buyValue >= sellValue) {
+        setCgtTax(0);
+      } else if (sellValue > buyValue) {
+        const gain = sellValue - buyValue;
+        cgtTax = gain * 0.075;
+        setCgtTax(cgtTax);
+      }
+      
+    };
+
+ 
+
 
 
   
@@ -83,28 +116,30 @@ const closePopup = () => {
       </div>
 
       <div className="button">
-        <button onClick={handleIncomeTaxButtonClick}>Income tax</button>     
+        <button onClick={handleIncomeTaxButtonClick}>Income tax</button>
         <button onClick={handleVehicleTaxButtonClick}>Vehicle tax</button>        
-        <button>Salary tax</button>
+        <button onClick={() => setShowCgtTaxPopup(true)}> Capital Gain Calculator</button>
         <button>VAT</button>
       </div>
 
       {showIncomeTaxPopup && (
+        
         <div className="popup">
                       <h2>Calculate Income Tax</h2>
+                      <div className='Instruction'> <h9>This Income tax caluculation is based on</h9>
+                 
+                 </div>
 
           <div className="popup-inner">
-            <div className='income'> 
-              <label htmlFor="income">Income:</label>
+              <label htmlFor="income">Please enter your Income:</label>
               <input type="number" id="income" value={income} onChange={handleIncomeChange} />
-            </div>
-            <div className='tax'>
-              <p1>Your tax amount is:</p1>
-              <input type="number" id="tax" value={tax} readOnly />
-            </div>
+            
             <div className='income-tax-buttons'>
               <button onClick={calculateIncomeTax}>Calculate</button>
               <button onClick={closePopup}>Close</button>
+              <div className='tax'>
+              <p1>Your tax amount is:{tax}</p1>
+                 </div>
             </div>
           </div>
         </div>
@@ -123,7 +158,27 @@ const closePopup = () => {
     <button onClick={() => setShowVehicleTaxPopup(false)}>Close</button>
     <h2>Vehicle Tax: {vehicleTax}</h2>
   </div>
-)}
+)}   
+
+<div>
+      {showCgtTaxPopup && (
+        <div className="popup">
+          <h2>Capital Gain Calculator</h2>
+          <label htmlFor="BuyValue">Buy Value:</label>
+          <input type="number" id="BuyValue" value={buyValue} onChange={handleBuyValueChange} />
+          <br />
+          <label htmlFor="SellValue">Sell Value:</label>
+          <input type="number" id="SellValue" value={sellValue} onChange={handleSellValueChange} />
+          <br />
+          <button onClick={calculateCgtTax}>Calculate Tax</button>
+          <button onClick={() => setShowCgtTaxPopup(false)}>Close</button>
+          <h2>Tax: {cgtTax}</h2>
+        </div>
+      )}
+    </div>
+          
+    <button  className="profile-button"><i className="fas fa-user"></i></button> 
+
 
 
      
@@ -139,6 +194,10 @@ const closePopup = () => {
             <span>S</span>ystem
           </h2>
         </div>
+          
+      
+
+
 
         <div className="menu-link">
           <ul>
